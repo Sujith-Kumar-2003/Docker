@@ -1,4 +1,6 @@
-const connectToDatabase = () => {
+const connectToDatabase = () => {q
+
+  
   const dummyPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
