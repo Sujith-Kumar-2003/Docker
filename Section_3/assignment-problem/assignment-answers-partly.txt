@@ -1,0 +1,121 @@
+MOST OF THEM Were deleted bcoz i accidentally pressed command + q
+
+cassynova@MacBookAir python-app % docker build -t python:suji .
+[+] Building 0.7s (8/8) FINISHED                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 103B                                                                       0.0s
+ => [internal] load metadata for docker.io/library/python:latest                                           0.5s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 2B                                                                            0.0s
+ => [1/3] FROM docker.io/library/python:latest@sha256:a6af772cf98267c48c145928cbeb35bd8e89b610acd70f93e3e  0.0s
+ => => resolve docker.io/library/python:latest@sha256:a6af772cf98267c48c145928cbeb35bd8e89b610acd70f93e3e  0.0s
+ => [internal] load build context                                                                          0.0s
+ => => transferring context: 57B                                                                           0.0s
+ => CACHED [2/3] WORKDIR /app                                                                              0.0s
+ => [3/3] COPY . /app                                                                                      0.0s
+ => exporting to image                                                                                     0.1s
+ => => exporting layers                                                                                    0.0s
+ => => exporting manifest sha256:5dd34c1f0daa5b8eef6ed79e9a74ce0910e226330962ab78fdae3497bff0ba4a          0.0s
+ => => exporting config sha256:42e1667a1185437f2441b24039e59214f9ae55568e3728bc21b2accc708cfca3            0.0s
+ => => exporting attestation manifest sha256:8a2a3c639e70b0cf684fc46fbc9cfbbecff1fdeb15957704af3f5f01bc69  0.0s
+ => => exporting manifest list sha256:5b4537d4620e02a2d252c3976efc1c8cff2b6b7b9b3ca741a161ad154a38bd5b     0.0s
+ => => naming to docker.io/library/python:suji                                                             0.0s
+ => => unpacking to docker.io/library/python:suji                                                          0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qxoq1a6072kptjken9emvw3gf
+cassynova@MacBookAir python-app % cd ..
+cassynova@MacBookAir assignment-problem % cd node-app 
+cassynova@MacBookAir node-app % docker build -t node:suji .  
+[+] Building 0.6s (9/9) FINISHED                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 131B                                                                       0.0s
+ => [internal] load metadata for docker.io/library/node:latest                                             0.4s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 2B                                                                            0.0s
+ => [1/4] FROM docker.io/library/node:latest@sha256:8369522c586f6cafcf77e44630e7036e4972933892f8b45e42d9b  0.0s
+ => => resolve docker.io/library/node:latest@sha256:8369522c586f6cafcf77e44630e7036e4972933892f8b45e42d9b  0.0s
+ => [internal] load build context                                                                          0.0s
+ => => transferring context: 92B                                                                           0.0s
+ => CACHED [2/4] WORKDIR /app                                                                              0.0s
+ => CACHED [3/4] COPY . /app                                                                               0.0s
+ => CACHED [4/4] RUN npm install                                                                           0.0s
+ => exporting to image                                                                                     0.0s
+ => => exporting layers                                                                                    0.0s
+ => => exporting manifest sha256:66d2845d2f2d883df2fed182bc507a0a40484e3cfb6cb9dab07c7af6500f5786          0.0s
+ => => exporting config sha256:3e48194e017d9c7329a49c1d21da7ec838dc3936d44a2b93fe00782b63fa95f1            0.0s
+ => => exporting attestation manifest sha256:a88be20ab33132d4c3ec7b3067267147f7ae52e3dd0d9a83c5b09424088e  0.0s
+ => => exporting manifest list sha256:56d258be8c305bcc773b395cffd37c567320732436928ceb7b0ddb18d6f73c58     0.0s
+ => => naming to docker.io/library/node:suji                                                               0.0s
+ => => unpacking to docker.io/library/node:suji                                                            0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/hslyw6o69bdg9dintt4dae6ze
+cassynova@MacBookAir node-app % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+python       suji      5b4537d4620e   41 seconds ago   1.47GB
+node         suji      56d258be8c30   10 minutes ago   1.63GB
+cassynova@MacBookAir node-app % docker run -it --name python_bmi python 
+Unable to find image 'python:latest' locally
+latest: Pulling from library/python
+Digest: sha256:a6af772cf98267c48c145928cbeb35bd8e89b610acd70f93e3e8ac3e96c92af8
+Status: Downloaded newer image for python:latest
+Python 3.13.5 (main, Jul  2 2025, 00:24:20) [GCC 12.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+KeyboardInterrupt
+>>> 
+KeyboardInterrupt
+>>> 
+KeyboardInterrupt
+>>> 
+ *  History restored 
+
+cassynova@MacBookAir node-app % ls                                    
+Dockerfile      package.json    server.js
+cassynova@MacBookAir node-app % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+python       suji      5b4537d4620e   2 minutes ago    1.47GB
+node         suji      56d258be8c30   12 minutes ago   1.63GB
+python       latest    a6af772cf982   3 weeks ago      1.47GB
+cassynova@MacBookAir node-app % docker run -it --name python-bmi python:suji
+(1) Metric (m, kg) or (2) Non-Metric (ft, pounds)?
+Please choose: 1
+Please enter your height in meters
+Your height: 1.67
+Please enter your weight in kilograms
+Your weight: 63
+Your body-mass-index: 22.589551436050055
+cassynova@MacBookAir node-app % docker run -p 4003:3000 --name node-server -d node:suji
+docker: Error response from daemon: Conflict. The container name "/node-server" is already in use by container "0f28ad32366aac3d4e6534335ea3b9c656fe1ae1d242bc81d3f5a90d1bcd1dd6". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+cassynova@MacBookAir node-app % docker run -p 4003:3000 --name node-server-ioha -d node:suji
+d6fecbb305df091462cd1a9f4293c02d7659c48e527c65621c2a021c998496f8
+cassynova@MacBookAir node-app % docker run -p 4003:3000 --name node-server-ioha -rm -d node:suji
+unknown shorthand flag: 'r' in -rm
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run 'docker run --help' for more information
+cassynova@MacBookAir node-app % docker run -p 4003:3000 --name node-server-ioha --rm -d node:suji
+docker: Error response from daemon: Conflict. The container name "/node-server-ioha" is already in use by container "d6fecbb305df091462cd1a9f4293c02d7659c48e527c65621c2a021c998496f8". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+cassynova@MacBookAir node-app % docker run -p 4003:3000 --name node-server-lol --rm -d node:suji
+9f47658e57d1ae829eed83985cbda511a374bf0464b0bc575c1e208f0381be20
+docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint node-server-lol (2bd01ac4d08cfecaf275bc47bee2ce279510842f2d33b3d4ed0dac8a6172743b): Bind for 0.0.0.0:4003 failed: port is already allocated
+
+Run 'docker run --help' for more information
+cassynova@MacBookAir node-app % docker run -p 4006:3000 --name node-server-lol --rm -d node:suji
+73a5479bf8436d19fc2b9793825af6f1d0a9ddc6092266e0e1b3ff3de3fd59e2
+cassynova@MacBookAir node-app % docker run -it --rm --name python-bmi python:suji         
+docker: Error response from daemon: Conflict. The container name "/python-bmi" is already in use by container "eb08e762febbe929ec54b484842aad4e426be65677683d5b44a3aae03e551814". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+cassynova@MacBookAir node-app % docker run -it --rm --name python-bmi-star python:suji
+(1) Metric (m, kg) or (2) Non-Metric (ft, pounds)?
+Please choose: 1
+Please enter your height in meters
+Your height: 1.7
+Please enter your weight in kilograms
+Your weight: 61
+Your body-mass-index: 21.107266435986162
