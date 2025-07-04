@@ -1,0 +1,9 @@
+docker run -it node
+# this runs the package in the interactive shell.
+
+docker pull node
+#this downloads the node package from the docker hub
+
+docker ps -a
+#shows all the docker processes(all running docker containers)
+
